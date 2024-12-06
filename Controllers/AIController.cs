@@ -42,9 +42,9 @@ namespace API.Controllers
             if (ioTHubConnectionString != null)
             {
                 var serviceClientForIoTHub = ServiceClient.CreateFromConnectionString(ioTHubConnectionString);
-                var seralizedMessage = JsonConvert.SerializeObject(textMessageResponse);
+                //var seralizedMessage = JsonConvert.SerializeObject(textMessageResponse);
 
-                var ioTMessage = new Message(Encoding.UTF8.GetBytes(seralizedMessage));
+                var ioTMessage = new Message(Encoding.UTF8.GetBytes(textMessageResponse));
                 await serviceClientForIoTHub.SendAsync(_appConfigurationService.IoTDeviceName, ioTMessage);
             }
 
